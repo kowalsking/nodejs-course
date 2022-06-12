@@ -19,7 +19,6 @@ function stealRing(characters, owner) {
   })
 }
 
-module.exports = {
-  characters, 
-  stealRing
+module.exports = function log() {
+  console.log('log')
 }

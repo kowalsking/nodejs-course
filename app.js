@@ -1,9 +1,11 @@
-const { characters, stealRing } = require('./characters.js')
+const log = require('./characters.js')
 
-let myChars = characters
+// let myChars = characters
 
-myChars = stealRing(myChars, 'Frodo')
+// myChars = stealRing(myChars, 'Frodo')
 
-for (const c of characters) {
-  console.log(c)
-}
+// for (const c of characters) {
+//   console.log(c)
+// }
+
+log()
