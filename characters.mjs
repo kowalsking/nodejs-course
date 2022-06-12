@@ -6,3 +6,5 @@ export const characters = [
 export function greet(character) {
   console.log('Congratulations to ' + character)
 }
+
+export default () => console.log('log')
