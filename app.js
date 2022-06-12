@@ -1,15 +1,9 @@
-const log = require('./characters.js')
+const a = 0;
 
-// let myChars = characters
+if (a > 0) {
+  const log = require('./characters.js')
+  log()
+} else {
+ console.log(' Less then 0')
+}
 
-// myChars = stealRing(myChars, 'Frodo')
-
-// for (const c of characters) {
-//   console.log(c)
-// }
-
-log()
-
-const a = 2
-
-module.exports = { a } 
