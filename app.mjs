@@ -1,7 +1,11 @@
-import log, { characters, greet as hello } from './characters.mjs'
+// import log, { characters, greet as hello } from './characters.mjs'
 
-for (const c of characters) {
-  hello(c)
+async function main() {
+  const { characters, greet } = await import('./characters.mjs')
+  for (const c of characters) {
+    greet(c)
+  }
+  
 }
 
-log()
+main()
