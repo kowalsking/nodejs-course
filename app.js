@@ -1,4 +1,9 @@
-const fs = require('fs')
+const { characters, stealRing } = require('./characters.js')
 
-const data = fs.readFileSync('./data.txt')
-console.log(data.toString())
+let myChars = characters
+
+myChars = stealRing(myChars, 'Frodo')
+
+for (const c of characters) {
+  console.log(c)
+}
