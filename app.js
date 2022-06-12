@@ -9,3 +9,7 @@ const log = require('./characters.js')
 // }
 
 log()
+
+const a = 2
+
+module.exports = { a } 
