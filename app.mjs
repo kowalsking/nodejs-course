@@ -1,7 +1,7 @@
-import log, { characters, greet } from './characters.mjs'
+import log, { characters, greet as hello } from './characters.mjs'
 
 for (const c of characters) {
-  greet(c)
+  hello(c)
 }
 
 log()
