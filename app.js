@@ -18,4 +18,4 @@ const id = setTimeout(() => {
 setTimeout(() => {
   clearTimeout(id)
   console.log('Finished!')
-}, 5000)
+}, 1000)
