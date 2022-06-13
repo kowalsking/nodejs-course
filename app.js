@@ -11,11 +11,17 @@
 // setTimeout(myFunc, 1500, 'Cool')
 
 
-const id = setTimeout(() => {
-  console.log('BOOM!')
-}, 5000)
+// const id = setTimeout(() => {
+//   console.log('BOOM!')
+// }, 5000)
 
-setTimeout(() => {
-  clearTimeout(id)
-  console.log('Finished!')
-}, 1000)
+// setTimeout(() => {
+//   clearTimeout(id)
+//   console.log('Finished!')
+// }, 1000)
+
+console.log('Before')
+
+setImmediate(() => console.log('After all'))
+
+console.log('After')
