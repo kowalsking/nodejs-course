@@ -20,8 +20,18 @@
 //   console.log('Finished!')
 // }, 1000)
 
-console.log('Before')
+// console.log('Before')
 
-setImmediate(() => console.log('After all'))
+// setImmediate(() => console.log('After all'))
 
-console.log('After')
+// console.log('After')
+
+// const id = setTimeout(() => {
+//   console.log('BOOM!')
+// }, 5000)
+
+// id.unref()
+
+// setImmediate(() =>{
+//   id.ref()
+// })
