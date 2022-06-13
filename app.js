@@ -42,3 +42,9 @@ myEmitter.on('error', err => {
 })
 
 myEmitter.emit('error', new Error('EEEERRRROOOORRRR'))
+
+const target = new EventTarget()
+const logTarget = () => console.log('Connected to target')
+
+target.addEventListener('connected', logTarget)
+target.dispatchEvent(new Event('connected'))
