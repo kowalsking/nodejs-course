@@ -10,7 +10,7 @@ myEmitter.addListener('connected', logDbConnection)
 
 myEmitter.emit('connected')
 
-myEmitter.removeListener('connected', logDbConnection)
+// myEmitter.removeListener('connected', logDbConnection)
 // myEmitter.off('connected', logDbConnection)
 // myEmitter.removeAllListener('connected')
 
@@ -35,5 +35,10 @@ console.log(myEmitter.getMaxListeners())
 
 console.log(myEmitter.listenerCount('msg'))
 console.log(myEmitter.listenerCount('off'))
+console.log(myEmitter.eventNames())
 
+myEmitter.on('error', err => {
+  console.log(`Error: ${err.message}`)
+})
 
+myEmitter.emit('error', new Error('EEEERRRROOOORRRR'))
