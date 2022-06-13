@@ -4,8 +4,18 @@
 //   console.log(performance.now() - start)
 // }, 1000)
 
-function myFunc(arg) {
-  console.log('Arg', arg)
-}
+// function myFunc(arg) {
+//   console.log('Arg', arg)
+// }
 
-setTimeout(myFunc, 1500, 'Cool')
+// setTimeout(myFunc, 1500, 'Cool')
+
+
+const id = setTimeout(() => {
+  console.log('BOOM!')
+}, 5000)
+
+setTimeout(() => {
+  clearTimeout(id)
+  console.log('Finished!')
+}, 5000)
