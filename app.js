@@ -1,3 +1,14 @@
+const perf_hooks = require('perf_hooks');
+
+const performanceObserver = new perf_hooks.PerformanceObserver((items, observer)  => {
+  console.log(items.getEntries())
+  const entry = items.getEntriesByName('slow').pop();
+  console.log(entry.name, entry.duration)
+  observer.disconnect()
+})
+
+performanceObserver.observe({ entryTypes: ['measure'] })
+
 function slow() {
   performance.mark('start')
   const arr = []
@@ -6,8 +17,6 @@ function slow() {
   }
   performance.mark('end')
   performance.measure('slow', 'start', 'end')
-
-  console.log(performance.getEntriesByName('slow'))
 }
 
 slow()
