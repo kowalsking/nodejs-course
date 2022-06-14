@@ -1,13 +1,10 @@
-const a = 5
+const crypto = require('crypto')
+const start = performance.now()
 
-function b() {
-  return c()
-}
-function c() {
-  return d()
-}
-function d() {
-  console.log(a)
-}
+process.env.UV_THREADPOOL_SIZE = 8;
 
-b()
+for (let i = 0; i < 50; i++) {
+  crypto.pbkdf2('test', 'salt', 100000, 64, 'sha512', () => {
+    console.log(performance.now() - start)
+  })
+}
