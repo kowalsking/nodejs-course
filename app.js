@@ -1,11 +1,13 @@
-const https = require('https')
-const start = performance.now()
+function slow() {
+  performance.mark('start')
+  const arr = []
+  for(let i = 0; i < 10000000; i++) {
+    arr.push(i*i)
+  }
+  performance.mark('end')
+  performance.measure('slow', 'start', 'end')
 
-for (let i = 0; i < 50; i++) {
-  https.get('https://amazon.com', (res) => {
-    res.on('data', () => {})
-    res.on('end', () => {
-      console.log(performance.now() - start)
-    })
-  })
+  console.log(performance.getEntriesByName('slow'))
 }
+
+slow()
