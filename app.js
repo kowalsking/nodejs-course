@@ -1,14 +1,20 @@
-const { fork } = require('child_process')
+const workerFunction = array => {
 
-const forkProcess = fork('fork.js')
+  return new Promise((resolve, reject) => {
 
-forkProcess.on('message', (msg) => {
-  console.log(`Message: ${msg}`)
-})
+  })
+}
 
-forkProcess.on('exit', statusCode => {
-  console.log('Exited: ', statusCode)
-})
+const forkFunction = array => {
 
-forkProcess.send('Ping')
-forkProcess.send('disconnect')
+  return new Promise((resolve, reject) => {
+
+  })
+}
+
+const main = async () => {
+  await workerFunction([25, 19, 48, 30])
+  await forkFunction([25, 19, 48, 30])
+}
+
+main()
