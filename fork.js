@@ -1,6 +1,6 @@
-process.on('message', msg => {
-  if (msg === 'disconnect') return process.disconnect()
+const { compute } = require('./factorial');
 
-  console.log('Message from fork: ', msg)
-  process.send('Pong')
-})
+process.on('message', (msg) => {
+	process.send(compute(msg));
+	process.disconnect();
+});
