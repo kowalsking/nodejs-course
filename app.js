@@ -22,11 +22,6 @@ const workerFunction = array => {
       performance.measure('worker', 'worker start', 'worker end')
       resolve(msg)
     })
-
-    worker.on('error', err => {
-      console.log('ERROR!!!: ', err)
-    })
-
   })
 }
 
