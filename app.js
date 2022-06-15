@@ -11,3 +11,4 @@ forkProcess.on('exit', statusCode => {
 })
 
 forkProcess.send('Ping')
+forkProcess.send('disconnect')
