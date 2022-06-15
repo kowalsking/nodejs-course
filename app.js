@@ -1,15 +1,13 @@
-const { spawn } = require('child_process')
+const { fork } = require('child_process')
 
-const childProcess = spawn('dir')
+const forkProcess = fork('fork.js')
 
-childProcess.stdout.on('data', (data) => {
-  console.log('stdout: ', data)
+forkProcess.on('message', (msg) => {
+  console.log(`Message: ${msg}`)
 })
 
-childProcess.stderr.on('data', (data) => {
-  console.log('stderr: ', data)
+forkProcess.on('exit', statusCode => {
+  console.log('Exited: ', statusCode)
 })
 
-childProcess.on('exit', (code) => {
-  console.log('exit code', code)
-})
+forkProcess.send('Ping')
