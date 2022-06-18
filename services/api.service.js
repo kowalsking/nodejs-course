@@ -4,7 +4,7 @@ import { getKeyValue, TOKEN_DICTIONARY } from './storage.service.js'
 const getWeather = async city => {
   const token = process.env.TOKEN ?? await getKeyValue(TOKEN_DICTIONARY.token)
   if (!token) {
-    throw new Error('Toke didnt found!')
+    throw new Error('Token didn`t found!')
   }
 
   const { data } = await axios.get('https://api.openweathermap.org/data/2.5/weather', {
@@ -12,7 +12,7 @@ const getWeather = async city => {
       q: city,
       appid: token,
       lang: 'en',
-      utils: 'metric'
+      units: 'metric'
     }
   })
   return data

@@ -19,4 +19,12 @@ const printHelp = () => {
   )
 }
 
-export { printError, printSuccess, printHelp }
+const printWeatherData = (data) => {
+  return console.log(dedent`
+    Soo.. temperature: ${data.main.temp} but feels like ${data.main.feels_like}!
+    Outside we have ${data.weather[0].main.toLowerCase()}, ${data.weather[0].description} to be honest...
+    Нехай проблеми та невзгоди не роблять вам в житті погоди!
+  `)
+}
+
+export { printError, printSuccess, printHelp, printWeatherData }
