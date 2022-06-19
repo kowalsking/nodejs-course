@@ -1,10 +1,10 @@
 import express from 'express'
-import { userRouter } from './users/users'
+import { userRouter } from './users/users.js'
 
 const port = 8080
 const app = express()
 
-app.all('/hello', (req, res, next) => {
+app.get('/hello', (req, res, next) => {
   res.set('Content-Type', 'text/plain')
   res.send('Hello!')
 })
