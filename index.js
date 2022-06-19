@@ -8,7 +8,12 @@ app.all('/hello', (req, res, next) => {
   next()
 })
 
-app.get('/hello', (req, res) => {
+const cb = (req, res, next) => {
+  console.log('cb')
+  next()
+}
+
+app.get('/hello', cb, (req, res) => {
   res.send('Hello!')
 })
 
