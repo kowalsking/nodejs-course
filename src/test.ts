@@ -1,70 +1,24 @@
-function Component(id: number) {
-  console.log('init')
+import 'reflect-metadata'
+
+function Inject(key: string) {
   return (target: Function) => {
-    console.log('run')
-    target.prototype.id = id
+    Reflect.defineMetadata(key, 1, target)
+    const meta = Reflect.getMetadata(key, target)
+
+    console.log(meta)
   }
 }
 
-function Logger() {
-  console.log('init logger')
-  return (target: Function) => {
-    console.log('run loggger')
-  }
+
+function Prop(target: Object, name: string) { }
+
+@Inject('C')
+export class C {
+  @Prop prop: number
 }
 
-function Method(
-  target: Object,
-  propertyKey: string,
-  propertyDescriptor: PropertyDescriptor
-) {
-  console.log(propertyKey)
-  propertyDescriptor.value = function (...args: any[]) {
-    return args[0] * 10;
-  }
+@Inject('D')
+export class D {
+  @Prop prop: number
 }
 
-function Prop(
-  target: Object,
-  propertyKey: string
-) {
-  let value: number;
-
-  const getter = () => {
-    console.log('get')
-    return value
-  }
-
-  const setter = (newValue: number) => {
-    console.log('set')
-    value = newValue
-  }
-
-  Object.defineProperty(target, propertyKey, {
-    get: getter,
-    set: setter
-  })
-}
-
-function Param(
-  target: Object,
-  propertyKey: string,
-  index: number
-) {
-  console.log(propertyKey, index)
-}
-
-@Logger()
-@Component(3)
-export class User {
-  @Prop id: number;
-
-  @Method
-  updateId(@Param newId: number) {
-    this.id = newId;
-    return this.id
-  }
-}
-
-console.log(new User().id)
-console.log(new User().updateId(5))
