@@ -48,7 +48,6 @@ export class App {
 		this.useExceptionFilters()
 		await this.prismaService.connect()
 		this.server = this.app.listen(this.port)
-
 		this.logger.log('Server listening on port ' + this.port)
 	}
 }
