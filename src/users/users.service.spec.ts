@@ -1,6 +1,9 @@
+import 'reflect-metadata'
+import { UserModel } from '@prisma/client'
 import { Container } from 'inversify'
 import { IConfigService } from '../config/config.service.interface'
 import { TYPES } from '../types'
+import { User } from './user.entity'
 import { UserService } from './user.service'
 import { IUserService } from './user.service.interface'
 import { IUsersRepository } from './users.repository.interface'
@@ -29,12 +32,26 @@ beforeAll(() => {
 	usersService = container.get<IUserService>(TYPES.UserService)
 })
 
+let createdUser: UserModel | null
+
 describe('UserService', () => {
 	it('createUser', async () => {
-		const createdUser = await usersService.createUser({
+		configService.get = jest.fn().mockReturnValueOnce('azov')
+		usersRepository.create = jest.fn().mockImplementationOnce(
+			(user: User): UserModel => ({
+				name: user.name,
+				email: user.email,
+				password: user.password,
+				id: 1,
+			}),
+		)
+		createdUser = await usersService.createUser({
 			email: 'g@g.com',
 			name: 'Godblessed',
 			password: 'azov',
 		})
+
+		expect(createdUser?.id).toEqual(1)
+		expect(createdUser?.password).not.toEqual('azov')
 	})
 })
