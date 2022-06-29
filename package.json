@@ -11,6 +11,7 @@
 		"build": "tsc",
 		"dev": "nodemon",
 		"generate": "npx prisma generate",
+		"test": "jest",
 		"dev:inspect": "nodemon -e ts,json --exec node --inspect=localhost:9222 -r ts-node/register src/main.ts"
 	},
 	"repository": {
