@@ -12,7 +12,7 @@
 		"dev": "nodemon",
 		"generate": "npx prisma generate",
 		"test": "jest",
-		"test:e2e": "jest --config jest.e2e.config.ts",
+		"test:e2e": "jest --config jest.e2e.config.ts --coverage",
 		"dev:inspect": "nodemon -e ts,json --exec node --inspect=localhost:9222 -r ts-node/register src/main.ts"
 	},
 	"repository": {
