@@ -13,9 +13,9 @@ import { AuthMiddleware } from './common/auth.middleware'
 
 @injectable()
 export class App {
-	app: Express
-	port: number
-	server: Server
+	public app: Express
+	private port: number
+	private server: Server
 
 	constructor(
 		@inject(TYPES.ILogger) private logger: ILogger,
@@ -26,9 +26,6 @@ export class App {
 	) {
 		this.app = express()
 		this.port = 8080
-		this.userController = userController
-		this.logger = logger
-		this.exceptionFilter = exceptionFilter
 	}
 
 	useMiddleware(): void {
